@@ -12,7 +12,6 @@ abstract class TaskRemoteDataSource {
   Future<Task> toggleDone(String id);
 }
 
-/// Chave do SharedPreferences
 const _kTasksKey = 'tasks_storage_v1';
 
 class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
@@ -39,12 +38,10 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
     if (f == null) return items;
     var out = items;
 
-    // status
     if (f.status != null) {
       out = out.where((t) => t.status == f.status).toList();
     }
 
-    // período (inclusive)
     if (f.from != null) {
       out = out.where((t) {
         final d = t.dueDate;
@@ -53,7 +50,6 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
       }).toList();
     }
     if (f.to != null) {
-      // incluir o dia inteiro de 'to'
       final toEnd =
           DateTime(f.to!.year, f.to!.month, f.to!.day, 23, 59, 59, 999);
       out = out.where((t) {
@@ -62,7 +58,6 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
       }).toList();
     }
 
-    // ordenação: mais recentes primeiro (por createdAt ou dueDate; ajuste conforme seu modelo)
     out.sort((a, b) {
       final ad = a.dueDate ?? DateTime.fromMillisecondsSinceEpoch(0);
       final bd = b.dueDate ?? DateTime.fromMillisecondsSinceEpoch(0);
@@ -84,7 +79,6 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
 
     final newTask = task.copyWith(
       id: (task.id.isEmpty ? _genId() : task.id),
-      // se tiver createdAt no seu entity, set aqui.
     );
 
     final list = [newTask, ...items];

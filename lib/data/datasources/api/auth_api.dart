@@ -15,7 +15,6 @@ class AuthApi {
     final token = data['token'] as String;
     await _storage.write(AppConstants.jwtKey, token);
     return data;
-    // Espera: { token, user: { id, name, email } }
   }
 
   Future<Map<String, dynamic>> register(

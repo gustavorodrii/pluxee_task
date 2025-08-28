@@ -1,4 +1,3 @@
-// main.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,7 +24,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProvider<TaskRepository>(
       create: (_) {
-        // useMock:true => tudo local, sem backend
         final ds = TaskRemoteDataSourceImpl(useMock: true);
         return TaskRepositoryImpl(ds);
       },

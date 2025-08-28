@@ -6,8 +6,6 @@ import '../../../domain/entities/task_status.dart';
 import 'auth_api.dart';
 import 'task_api.dart';
 
-/// Implementação mock para rodar o front sem backend.
-/// Mantém contrato igual aos APIs reais.
 class MockApi implements AuthApi, TaskApi {
   final _uuid = const Uuid();
   final SecureStorage _storage = SecureStorage();
@@ -28,8 +26,6 @@ class MockApi implements AuthApi, TaskApi {
       'status': 'pending',
     },
   ];
-
-  // -------- AuthApi
 
   @override
   Future<Map<String, dynamic>> login(String email, String password) async {
@@ -68,8 +64,6 @@ class MockApi implements AuthApi, TaskApi {
   Future<void> logout() async {
     await _storage.delete(AppConstants.jwtKey);
   }
-
-  // -------- TaskApi
 
   @override
   Future<List<Map<String, dynamic>>> list(Map<String, dynamic> params) async {

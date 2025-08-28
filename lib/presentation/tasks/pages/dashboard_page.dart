@@ -26,7 +26,6 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   void initState() {
     super.initState();
-    // context.read<TaskBloc>().add(TasksRequested());
   }
 
   Future<void> _pickDateRange() async {
@@ -84,7 +83,6 @@ class _DashboardPageState extends State<DashboardPage> {
             loading: state.loading || state.actionInProgress,
             child: Column(
               children: [
-                // Filtros
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Wrap(

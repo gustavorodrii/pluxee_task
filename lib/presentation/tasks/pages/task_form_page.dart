@@ -89,8 +89,7 @@ class _TaskFormPageState extends State<TaskFormPage> {
       );
     }
 
-    // Em vez de `go('/dashboard')`:
-    context.pop(); // mantém o mesmo TaskBloc vivo e a lista atualiza
+    context.pop();
   }
 
   @override

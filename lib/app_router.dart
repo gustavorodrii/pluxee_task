@@ -26,7 +26,6 @@ class GoRouterRefreshStream extends ChangeNotifier {
   }
 }
 
-// Use uma key própria do GoRouter (não leia currentContext na inicialização)
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
 GoRouter buildRouter(BuildContext context) {
@@ -52,8 +51,6 @@ GoRouter buildRouter(BuildContext context) {
     routes: [
       GoRoute(path: '/login', builder: (_, __) => const LoginPage()),
       GoRoute(path: '/register', builder: (_, __) => const RegisterPage()),
-
-      // Shell que compartilha o mesmo Bloc entre dashboard e filhas
       ShellRoute(
         builder: (context, state, child) {
           final ds = TaskRemoteDataSourceImpl(useMock: true);
@@ -64,7 +61,6 @@ GoRouter buildRouter(BuildContext context) {
           );
         },
         routes: [
-          // Página principal
           GoRoute(
             path: '/dashboard',
             builder: (context, state) => const DashboardPage(),

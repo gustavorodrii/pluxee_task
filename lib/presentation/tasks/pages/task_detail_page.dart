@@ -63,7 +63,6 @@ class TaskDetailPage extends StatelessWidget {
                             title: 'Excluir',
                             message: 'Confirma excluir esta tarefa?');
                         if (!ok) return;
-                        // dispatch
                         // ignore: use_build_context_synchronously
                         context.read<TaskBloc>().add(TaskDeleted(task.id));
                         // ignore: use_build_context_synchronously
