@@ -54,8 +54,8 @@ O projeto segue uma separação em camadas:
 
 ```bash
 # 1. Clone o repositório
-git clone <url-do-repo>
-cd <nome-do-repo>
+git clone https://github.com/gustavorodrii/pluxee_task.git
+cd main
 
 # 2. Instale as dependências
 flutter pub get
@@ -76,36 +76,11 @@ flutter run
 O comportamento é controlado em **`config.dart`**:
 
 ```dart
-const bool kUseMockApi = true; // true = offline/local, false = usa API
-const String kBaseUrl = 'https://sua.api.com';
+const bool kUseMockApi = true; 
+const String kBaseUrl = 'https://backend.com';
 ```
 
 * `true` → as tarefas são salvas e lidas localmente (offline-first)
 * `false` → o app usa a API remota (via Dio)
 
----
 
-## 🛠️ Troubleshooting
-
-* **Tarefas não aparecem após criar** → verifique se o mesmo `TaskBloc` está sendo compartilhado entre telas (use ShellRoute ou BlocProvider no topo).
-* **Toggle ou filtros não funcionam** → confirme que está no modo local (`kUseMockApi = true`) e que o datasource está salvando corretamente.
-* **Erro no iOS** → rode `cd ios && pod install` e confira a versão mínima do iOS no `Podfile`.
-
----
-
-## 🗺️ Roadmap
-
-* Sincronização entre local ↔️ remoto
-* Busca por texto
-* Notificações de vencimento
-* Testes automatizados (unitários e de UI)
-
----
-
-## 📄 Licença
-
-Adicione aqui a licença desejada (MIT, Apache 2.0, etc).
-
----
-
-Quer que eu crie também uma **versão em inglês** do README (para deixar o projeto mais apresentável no GitHub) ou prefere manter apenas em português?
