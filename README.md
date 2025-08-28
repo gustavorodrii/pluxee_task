@@ -83,4 +83,8 @@ const String kBaseUrl = 'https://backend.com';
 * `true` → as tarefas são salvas e lidas localmente (offline-first)
 * `false` → o app usa a API remota (via Dio)
 
+## Testes criados
+
+Rode o comando flutter test test/tasks/test_bloc_tasks.dart
+
 
